@@ -1,3 +1,7 @@
+# FAQ
+
+---
+
 # 1.求封面
 
 就给你几个链接，自己探索
@@ -8,3 +12,5 @@ https://t.bilibili.com/224009070207816673?tab=1 （是我开发的）
 https://dobby233liu.github.io/yvdcover/nwapp/index.html （也是我开发的）
 
 ok了
+
+---
