@@ -10,6 +10,7 @@
 https://t.bilibili.com/224009070207816673?tab=1 （是我开发的）
 ## B.youtube封面
 https://dobby233liu.github.io/yvdcover/nwapp/index.html （也是我开发的）
+UPDATE：我最近在它上面添加了b站支持，并且***还添加了中文***，不去试一下吗？
 
 ok了
 
