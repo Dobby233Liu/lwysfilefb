@@ -29,7 +29,7 @@ Manual installation
 -----
 After downloading the files to your local workspace:
 1. Manually add all files in the Scripts folder.
-2. Manaully create a Object named `_gmu_anim`, and create the same event of the file in `Objects\\_gmu_anim\\` folder, and copy the file contents in the corresponding event.
+2. Manaully create a Object named `_gmu_anim`, and create the same event of the file in `Objects/_gmu_anim` folder, and copy the file contents in the corresponding event.
 
 Simple usage
 -----
@@ -44,12 +44,14 @@ This plugin supports all the effects listed in [https://easings.net](https://eas
 Functions
 -----
 **Bold**: New in TML's UNDERTALE Engine (as UNDERTALE Engine below)
+<a id="gmu_anim_init"></a>
 * GMU_Anim_Init();
 	* Description
 		* This function declares the constants. You don't need to call it.
-	* In UNDERTALE Engine
+	* In UNDERTALE Engine<a id="gmu_anim_init_ut_engine"></a>
 		* Anim_Init();
 
+<a id="gmu_anim_new"></a>
 * GMU_Anim_New(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*);
 	* Description
 		* Create a easing instance
@@ -75,9 +77,10 @@ Functions
 		* Additional argument 2
 	* Return value
 		* Easing object; If there is multiple target instance, then returns a array
-	* In UNDERTALE Engine
+	* In UNDERTALE Engine<a id="gmu_anim_new_ut_engine"></a>
 		* Anim_Create(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*);
 
+<a id="gmu_anim_stop"></a>
 * GMU_Anim_Stop(target, var_name*);
 	* Description
 		* Stop target easing instance
@@ -87,12 +90,13 @@ Functions
 		* Variable name, if you fill it, then it will only stop the easing instance for the specified variable.
 	* Return value
 		* Is there a easing instance stopped by this function call
-	* In UNDERTALE Engine
+	* In UNDERTALE Engine<a id="gmu_anim_stop_ut_engine"></a>
 		* Anim_Destroy(target, var_name*, **skip\***);
 			* skip (Optional)
-				* Stops the easing instance early
+				* Stops the easing instance early if specified as `false`
 					* Works like GMU_Anim_Skip
 
+<a id="gmu_anim_skip"></a>
 * GMU_Anim_Skip(target, var_name*);
 	* Description
 		* Stops the easing instance early
@@ -102,9 +106,10 @@ Functions
 		* Variable name, if you fill it, then it will only stop the easing instance for the specified variable early.
 	* Return value
 		* Is there a easing instance stopped early by this function call
-	* In UNDERTALE Engine
+	* In UNDERTALE Engine<a id="gmu_anim_skip_ut_engine"></a>
 		* See Anim_Destroy
 
+<a id="gmu_anim_isexists"></a>
 * GMU_Anim_IsExists(target, var_name*);
 	* Description
 		* Check if the target easing instance exists.
@@ -114,6 +119,25 @@ Functions
 		* Variable name, if you fill it, then it will only query the easing instance for the specified variable.
 	* Return value
 		* Is the easing instance exists.
+	* In UNDERTALE Engine<a id="gmu_anim_isexists_ut_engine"></a>
+		* Anim_IsExists(target, var_name*);
+
+## Only in UNDERTALE Engine
+
+<a id="ute_anim_step"></a>
+* Anim_Step();
+	* Description
+		* This function is for internal easing in GMU_Anim objects. You don't need (and better not to) to call it.
+
+<a id="ute_anim_getvalue"></a>
+* Anim_GetValue();
+	* Description
+		* This function is for internal easing in [Anim_Step](#ute_anim_step). You don't need (and better not to) to call it.
+
+<a id="ute_anim_uninit"></a>
+* Anim_Uninit();
+	* Description
+		* This function cleans up data created by GMU_Anim. You don't need (and better not to) to call it.
 
 Constants
 -----
