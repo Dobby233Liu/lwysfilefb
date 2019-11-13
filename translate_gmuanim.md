@@ -1,6 +1,7 @@
 GMU_Anim (v2.1.0)
 =====
 *[Original document](https://github.com/GamemakerChina/GMU_Anim/blob/master/README.md)*. I only added the `In Undertale Engine` section.
+---
 Description
 -----
 This plugin is for simplifying easing of an instance variable.
