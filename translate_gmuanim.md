@@ -38,21 +38,21 @@ If you want to add easing for a room instance or a object, you only run the GMU_
 GMU_Anim_New(target, "x", GMU_ANIM.QUAD, GMU_ANIM.OUT, 100, 200, 15, 30);
 ```
 Let the `x` variable in all instances of the `target` object, using the `EaseOutQuart` effect, increment from 100 to 200 in 15 frames, run after 30 frames.<br>
-`GMU_ANIM.QUAD` and `GMU_ANIM.OUT` are custom constants in the plugin, see the `Constants` part.<br>
+`GMU_ANIM.QUAD` and `GMU_ANIM.OUT` are custom constants in the plugin, see the [Constants](#constants) part.<br>
 This plugin supports all the effects listed in [https://easings.net](https://easings.net).
 
 Functions
 -----
 **Bold**: New in TML's UNDERTALE Engine (as UNDERTALE Engine below)
 <a id="gmu_anim_init"></a>
-* GMU_Anim_Init();
+* GMU_Anim_Init(); [\[link\]](#gmu_anim_init)
 	* Description
 		* This function declares the constants. You don't need to call it.
-	* In UNDERTALE Engine<a id="gmu_anim_init_ut_engine"></a>
+	* In UNDERTALE Engine <a id="gmu_anim_init_ut_engine" href="#gmu_anim_init_ut_engine">\[link\]</a>
 		* Anim_Init();
 
 <a id="gmu_anim_new"></a>
-* GMU_Anim_New(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*);
+* GMU_Anim_New(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*); [\[link\]](#gmu_anim_new)
 	* Description
 		* Create a easing instance
 	* target
@@ -60,9 +60,9 @@ Functions
 	* var_name
 		* Variable name (self-explanatory)
 	* tween
-		* Tween effect, see the `Constants` part
+		* Tween effect, see the [Constants](#constants) part
 	* ease
-		* Ease effect, see the `Constants` part
+		* Ease effect, see the [Constants](#constants) part
 	* start
 		* Start value (self-explanatory)
 	* change
@@ -77,11 +77,11 @@ Functions
 		* Additional argument 2
 	* Return value
 		* Easing object; If there is multiple target instance, then returns a array
-	* In UNDERTALE Engine<a id="gmu_anim_new_ut_engine"></a>
+	* In UNDERTALE Engine <a id="gmu_anim_new_ut_engine" href="#gmu_anim_new_ut_engine">\[link\]</a>
 		* Anim_Create(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*);
 
 <a id="gmu_anim_stop"></a>
-* GMU_Anim_Stop(target, var_name*);
+* GMU_Anim_Stop(target, var_name*); [\[link\]](#gmu_anim_stop)
 	* Description
 		* Stop target easing instance
 	* target
@@ -90,14 +90,14 @@ Functions
 		* Variable name, if you fill it, then it will only stop the easing instance for the specified variable.
 	* Return value
 		* Is there a easing instance stopped by this function call
-	* In UNDERTALE Engine<a id="gmu_anim_stop_ut_engine"></a>
+	* In UNDERTALE Engine <a id="gmu_anim_stop_ut_engine" href="#gmu_anim_stop_ut_engine">\[link\]</a>
 		* Anim_Destroy(target, var_name*, **skip\***);
 			* skip (Optional)
 				* Stops the easing instance early if specified as `false`
 					* Works like GMU_Anim_Skip
 
 <a id="gmu_anim_skip"></a>
-* GMU_Anim_Skip(target, var_name*);
+* GMU_Anim_Skip(target, var_name*); [\[link\]](#gmu_anim_skip)
 	* Description
 		* Stops the easing instance early
 	* target
@@ -106,11 +106,11 @@ Functions
 		* Variable name, if you fill it, then it will only stop the easing instance for the specified variable early.
 	* Return value
 		* Is there a easing instance stopped early by this function call
-	* In UNDERTALE Engine<a id="gmu_anim_skip_ut_engine"></a>
+	* In UNDERTALE Engine <a id="gmu_anim_skip_ut_engine" href="#gmu_anim_skip_ut_engine">\[link\]</a>
 		* See Anim_Destroy
 
 <a id="gmu_anim_isexists"></a>
-* GMU_Anim_IsExists(target, var_name*);
+* GMU_Anim_IsExists(target, var_name*); [\[link\]](#gmu_anim_isexists)
 	* Description
 		* Check if the target easing instance exists.
 	* target
@@ -119,23 +119,23 @@ Functions
 		* Variable name, if you fill it, then it will only query the easing instance for the specified variable.
 	* Return value
 		* Is the easing instance exists.
-	* In UNDERTALE Engine<a id="gmu_anim_isexists_ut_engine"></a>
+	* In UNDERTALE Engine <a id="gmu_anim_isexists_ut_engine" href="#gmu_anim_isexists_ut_engine">\[link\]</a>
 		* Anim_IsExists(target, var_name*);
 
 ## Only in UNDERTALE Engine
 
 <a id="ute_anim_step"></a>
-* Anim_Step();
+* Anim_Step(); [\[link\]](#ute_anim_step)
 	* Description
 		* This function is for internal easing in GMU_Anim objects. You don't need (and better not to) to call it.
 
 <a id="ute_anim_getvalue"></a>
-* Anim_GetValue();
+* Anim_GetValue(); [\[link\]](#ute_anim_getvalue)
 	* Description
 		* This function is for internal easing in [Anim_Step](#ute_anim_step). You don't need (and better not to) to call it.
 
 <a id="ute_anim_uninit"></a>
-* Anim_Uninit();
+* Anim_Uninit(); [\[link\]](#ute_anim_uninit)
 	* Description
 		* This function cleans up data created by GMU_Anim. You don't need (and better not to) to call it.
 
