@@ -78,7 +78,7 @@ Functions
 	* Return value
 		* Easing object; If there is multiple target instance, then returns a array
 	* In UNDERTALE Engine <a id="gmu_anim_new_ut_engine" href="#gmu_anim_new_ut_engine">\[link\]</a>
-		* Anim_Create(target, var_name, tween, ease, start, change, duration, delay*, arg1*, arg2*);
+		* Anim_Create(target, var_name, tween, ease, start, change, duration, delay*, arg_0*, arg_1*);
 
 <a id="gmu_anim_stop"></a>
 * GMU_Anim_Stop(target, var_name*); [\[link\]](#gmu_anim_stop)
@@ -128,16 +128,33 @@ Functions
 * Anim_Step(); [\[link\]](#ute_anim_step)
 	* Description
 		* This function is for internal easing in GMU_Anim objects. You don't need (and better not to) to call it.
+        * Return value
+                * Always `true`
 
 <a id="ute_anim_getvalue"></a>
-* Anim_GetValue(); [\[link\]](#ute_anim_getvalue)
+* Anim_GetValue(tween, ease, time, arg_0*, arg_1*); [\[link\]](#ute_anim_getvalue)
 	* Description
-		* This function is for internal easing in [Anim_Step](#ute_anim_step). You don't need (and better not to) to call it.
+		* This function is for internal easing in [Anim_Step](#ute_anim_step). You don't need to call it.
+        * tween
+		* Tween effect, see the [Constants](#constants) part
+	* ease
+		* Ease effect, see the [Constants](#constants) part
+	* time
+                * Elapsed time
+	* arg_0 (Optional)
+		* Additional argument 1 
+	* arg_1 (Optional)
+		* Additional argument 2
+        * Return value
+                * A easing value for processing in Anim_Step(...)
+
 
 <a id="ute_anim_uninit"></a>
 * Anim_Uninit(); [\[link\]](#ute_anim_uninit)
 	* Description
 		* This function cleans up data created by GMU_Anim. You don't need (and better not to) to call it.
+        * Return value
+                * Always `true`
 
 Constants
 -----
