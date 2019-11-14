@@ -129,32 +129,32 @@ Functions
 	* Description
 		* This function is for internal easing in GMU_Anim objects. You don't need (and better not to) to call it.
         * Return value
-                * Always `true`
+		* Always `true`
 
 <a id="ute_anim_getvalue"></a>
 * Anim_GetValue(tween, ease, time, arg_0*, arg_1*); [\[link\]](#ute_anim_getvalue)
 	* Description
 		* This function is for internal easing in [Anim_Step](#ute_anim_step). You don't need to call it.
-        * tween
+	* tween
 		* Tween effect, see the [Constants](#constants) part
 	* ease
 		* Ease effect, see the [Constants](#constants) part
 	* time
-                * Elapsed time
+		* Elapsed time
 	* arg_0 (Optional)
 		* Additional argument 1 
 	* arg_1 (Optional)
 		* Additional argument 2
-        * Return value
-                * A easing value for processing in Anim_Step(...)
+	* Return value
+		* A easing value for processing in Anim_Step(...)
 
 
 <a id="ute_anim_uninit"></a>
 * Anim_Uninit(); [\[link\]](#ute_anim_uninit)
 	* Description
 		* This function cleans up data created by GMU_Anim. You don't need (and better not to) to call it.
-        * Return value
-                * Always `true`
+	* Return value
+		* Always `true`
 
 Constants
 -----
