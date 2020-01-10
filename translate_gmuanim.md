@@ -127,7 +127,7 @@ Functions
 <a id="ute_anim_step"></a>
 * Anim_Step(); [\[link\]](#ute_anim_step)
 	* Description
-		* This function is for internal easing in GMU_Anim objects. You don't need (and better not to) to call it.
+		* This function is for internal easing in GMU_Anim objects. You don't need (and better not) to call it.
 	* Return value
 		* Always `true`
 
@@ -152,7 +152,7 @@ Functions
 <a id="ute_anim_uninit"></a>
 * Anim_Uninit(); [\[link\]](#ute_anim_uninit)
 	* Description
-		* This function cleans up data created by GMU_Anim. You don't need (and better not to) to call it.
+		* This function cleans up data created by GMU_Anim. You don't need (and better not) to call it.
 	* Return value
 		* Always `true`
 
