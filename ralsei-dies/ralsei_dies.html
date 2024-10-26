@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>C'mon dude, hurry up! What's the matter?</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+    }
+    body {
+      background: black;
+      position: relative;
+    }
+    img {
+      margin: 0; padding: 0;
+      image-rendering: optimizeSpeed;
+      image-rendering: pixelated;
+    }
+
+    #interactable {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%; height: 25%;
+    }
+    #interactable > img {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto; height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+    }
+    #interactable[data-interacted] > img {
+      display: block;
+      cursor: default;
+    }
+    #interactable > img.pic2 {
+      display: none;
+    }
+    #interactable[data-interacted] > img.pic1 {
+      display: none;
+    }
+    #interactable[data-interacted] > img.pic2 {
+      display: block;
+    }
+
+    img.pic2 {
+      transform: translate(-6px, 7px);
+    }
+    img.pic2#explosion {
+      object-fit: fill;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="interactable" id="interactable">
+    <img class="pic1" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
+
+    <img class="pic2" src="ralsei-pertified.png" loading="eager" alt="Ralsei, pertified and splatted">
+    <img class="pic2" id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion">
+  </div>
+
+  <audio id="interactable-audio" preload>
+    <source type="audio/wav" src="explosion.wav"/>
+  </audio>
+
+  <script>
+    var interactable = document.getElementById("interactable");
+    var audio = document.getElementById("interactable-audio");
+    var explosion = document.getElementById("explosion");
+
+    function onClick(e) {
+      e.preventDefault();
+
+      interactable.dataset.interacted = true;
+      audio.currentTime = 0;
+      audio.play();
+      explosion.src = explosion.src;
+
+      // interactable.removeEventListener(interactable, onClick);
+    }
+
+    interactable.addEventListener("click", onClick);
+  </script>
+</body>
+
+</html>
