@@ -9,6 +9,7 @@
     html, body {
       margin: 0; padding: 0;
       width: 100%; height: 100%;
+      text-size-adjust: 100%;
     }
     body {
       background: black;
@@ -78,6 +79,7 @@
       e.preventDefault();
 
       interactable.dataset.interacted = true;
+      document.title = "Ralsei!?";
       audio.currentTime = 0;
       audio.play();
       explosion.src = explosion.src;
