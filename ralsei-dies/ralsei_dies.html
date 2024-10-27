@@ -1,93 +1,115 @@
-<!doctype html>
-
+<!DOCTPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>C'mon dude, hurry up! What's the matter?</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
     html, body {
       margin: 0; padding: 0;
       width: 100%; height: 100%;
-      text-size-adjust: 100%;
     }
     body {
       background: black;
-      position: relative;
+      color: white;
+      /* yeah */
+      color-scheme: only light;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
     }
     img {
-      margin: 0; padding: 0;
       image-rendering: optimizeSpeed;
       image-rendering: pixelated;
     }
 
-    #interactable {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%; height: 25%;
-    }
-    #interactable > img {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      width: auto; height: 100%;
-      object-fit: contain;
-      cursor: pointer;
-    }
-    #interactable[data-interacted] > img {
-      display: block;
-      cursor: default;
-    }
-    #interactable > img.pic2 {
-      display: none;
-    }
-    #interactable[data-interacted] > img.pic1 {
-      display: none;
-    }
-    #interactable[data-interacted] > img.pic2 {
-      display: block;
+    #veil {
+      flex: 0 0;
+      flex-basis: 25%;
+      min-height: 0;
     }
 
-    img.pic2 {
-      transform: translate(-6px, 7px);
+    .veil * {
+      height: 100%;
+      object-fit: contain;
     }
-    img.pic2#explosion {
+    .veil img {
+      cursor: pointer;
+    }
+    .veil:not([data-revealed]) > .img-hidden {
+      display: none;
+    }
+    .veil[data-revealed] > .img-cover {
+      display: none;
+    }
+    /* .veil[data-revealed] img {
+      cursor: default;
+    } */
+  </style>
+
+  <style>
+    .img-hidden {
+      display: grid;
+      place-items: center;
+    }
+    .img-hidden > img {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    #splat {
+      z-index: 1;
+    }
+    #explosion {
+      z-index: 2;
+      height: 125%;
       object-fit: fill;
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
-  <div class="interactable" id="interactable">
-    <img class="pic1" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
+  <div class="veil" id="veil">
+    <img class="img-cover" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
 
-    <img class="pic2" src="ralsei-pertified.png" loading="eager" alt="Ralsei, pertified and splatted">
-    <img class="pic2" id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion">
+    <div class="img-hidden">
+      <img id="splat" src="ralsei-pertified.png" loading="eager" alt="Ralsei, pertified and splatted">
+      <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion" tabindex="-1">
+    </div>
   </div>
 
-  <audio id="interactable-audio" preload>
+  <audio id="reveal-sound" preload>
     <source type="audio/wav" src="explosion.wav"/>
   </audio>
 
   <script>
-    var interactable = document.getElementById("interactable");
-    var audio = document.getElementById("interactable-audio");
+    var veil = document.getElementById("veil");
+    var revealSound = document.getElementById("reveal-sound");
     var explosion = document.getElementById("explosion");
 
     function onClick(e) {
       e.preventDefault();
 
-      interactable.dataset.interacted = true;
+      veil.dataset.revealed = true;
       document.title = "Ralsei!?";
-      audio.currentTime = 0;
-      audio.play();
+
+      revealSound.currentTime = 0;
+      revealSound.play();
       explosion.src = explosion.src;
 
-      // interactable.removeEventListener(interactable, onClick);
+      // veil.removeEventListener(veil, onClick);
     }
 
-    interactable.addEventListener("click", onClick);
+    veil.addEventListener("click", onClick);
   </script>
 </body>
 
