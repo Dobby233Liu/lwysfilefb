@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>C'mon dude, hurry up! What's the matter?</title>
+  <title>C'mon dude, hurry up! What's the holdup?</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
@@ -15,6 +15,11 @@
       margin: 0; padding: 0;
       width: 100%; height: 100%;
     }
+    img {
+      image-rendering: optimizeSpeed;
+      image-rendering: pixelated;
+    }
+
     body {
       background: black;
       color: white;
@@ -25,10 +30,6 @@
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
-    }
-    img {
-      image-rendering: optimizeSpeed;
-      image-rendering: pixelated;
     }
 
     #veil {
@@ -41,36 +42,29 @@
       height: 100%;
       object-fit: contain;
     }
-    .veil img {
+    .veil /*:not([data-revealed])*/ img {
       cursor: pointer;
     }
-    .veil:not([data-revealed]) > .img-hidden {
+    .veil:not([data-revealed]) > .veil-hidden {
       display: none;
     }
-    .veil[data-revealed] > .img-cover {
+    .veil[data-revealed] > .veil-cover {
       display: none;
     }
-    /* .veil[data-revealed] img {
-      cursor: default;
-    } */
   </style>
 
   <style>
-    .img-hidden {
+    .emboss {
       display: grid;
       place-items: center;
     }
-    .img-hidden > img {
+    .emboss > * {
       grid-column: 1;
       grid-row: 1;
     }
 
-    #splat {
-      z-index: 1;
-    }
     #explosion {
-      z-index: 2;
-      height: 125%;
+      transform: scale(1.25);
       object-fit: fill;
       pointer-events: none;
     }
@@ -79,34 +73,37 @@
 
 <body>
   <div class="veil" id="veil">
-    <img class="img-cover" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
+    <img class="veil-cover" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
 
-    <div class="img-hidden">
+    <div class="veil-hidden emboss">
       <img id="splat" src="ralsei-pertified.png" loading="eager" alt="Ralsei, pertified and splatted">
-      <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion" tabindex="-1">
+      <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion" tabindex="-1" aria-hidden="true">
     </div>
   </div>
 
-  <audio id="reveal-sound" preload>
-    <source type="audio/wav" src="explosion.wav"/>
+  <audio id="veil-reveal-sound" preload>
+    <source type="audio/wav" src="explosion.wav" />
   </audio>
 
   <script>
     var veil = document.getElementById("veil");
-    var revealSound = document.getElementById("reveal-sound");
+    var revealSound = document.getElementById("veil-reveal-sound");
+
     var explosion = document.getElementById("explosion");
 
     function onClick(e) {
       e.preventDefault();
-
-      veil.dataset.revealed = true;
-      document.title = "Ralsei!?";
-
-      revealSound.currentTime = 0;
-      revealSound.play();
-      explosion.src = explosion.src;
-
       // veil.removeEventListener(veil, onClick);
+
+      document.title = "Ralsei!?";
+      veil.dataset.revealed = true;
+
+      if (revealSound) {
+        revealSound.currentTime = 0;
+        revealSound.play();
+      }
+
+      explosion.src = explosion.src;
     }
 
     veil.addEventListener("click", onClick);
