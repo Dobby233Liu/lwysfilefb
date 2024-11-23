@@ -72,7 +72,7 @@
 </head>
 
 <body>
-  <div class="veil" id="veil" tabindex="0">
+  <div class="veil" id="veil" role="button" tabindex="0">
     <img class="veil-cover" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
 
     <div class="veil-hidden emboss">
@@ -107,6 +107,10 @@
     }
 
     veil.addEventListener("click", onClick);
+    veil.addEventListener("keypress", e => {
+      if (e.keyCode == 13 /* Enter */ || e.keyCode == 32 /* Space*/)
+        veil.click();
+    });
   </script>
 </body>
 
