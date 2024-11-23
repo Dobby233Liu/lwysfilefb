@@ -39,8 +39,10 @@
     }
 
     button.veil {
-      all: initial;
-      font: inherit; color: inherit;
+    	background: none; color: inherit;
+      padding: 0; font: inherit;
+    	border: none; outline: inherit;
+    	cursor: pointer;
     }
     .veil * {
       height: 100%;
@@ -81,7 +83,7 @@
 
     <div class="veil-hidden emboss">
       <img id="splat" src="ralsei-pertified.png" loading="eager" alt="Ralsei, petrified and splatted">
-      <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion" tabindex="-1">
+      <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion">
     </div>
   </button>
 
