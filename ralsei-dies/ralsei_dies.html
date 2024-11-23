@@ -38,6 +38,10 @@
       min-height: 0;
     }
 
+    button.veil {
+      all: initial;
+      font: inherit; color: inherit;
+    }
     .veil * {
       height: 100%;
       object-fit: contain;
@@ -72,14 +76,14 @@
 </head>
 
 <body>
-  <div class="veil" id="veil" role="button" tabindex="0">
+  <button class="veil" id="veil">
     <img class="veil-cover" src="ralsei.png" alt="Ralsei, desaturated and without his signature smile">
 
     <div class="veil-hidden emboss">
       <img id="splat" src="ralsei-pertified.png" loading="eager" alt="Ralsei, petrified and splatted">
       <img id="explosion" src="explosion.gif" loading="eager" alt="Crappy realistic explosion" tabindex="-1">
     </div>
-  </div>
+  </button>
 
   <audio id="veil-reveal-sound" preload>
     <source type="audio/wav" src="explosion.wav" />
@@ -92,7 +96,6 @@
     var explosion = document.getElementById("explosion");
 
     function onClick(e) {
-      e.preventDefault();
       // veil.removeEventListener(veil, onClick);
 
       document.title = "Ralsei!?";
@@ -107,10 +110,6 @@
     }
 
     veil.addEventListener("click", onClick);
-    veil.addEventListener("keypress", e => {
-      if (e.keyCode == 13 /* Enter */ || e.keyCode == 32 /* Space */)
-        veil.click();
-    });
   </script>
 </body>
 
